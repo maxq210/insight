@@ -42,6 +42,8 @@ if __name__ == '__main__':
 	convos, char_dict = get_bang_convs()
 	ques, ans = get_bang_ques_ans(convos)
 	ques_out = open('ques.txt', 'w+')
+	# for char in char_dict.keys():
+	# 	ques_out.write(char + ' ' + str(len(char_dict[char])) + '\n')
    # 	ans_out = open('ans.txt', 'w+')
     	#for question in char_dict.keys():
     	#	ques_out.write(key + '\n')
