@@ -80,13 +80,13 @@ def run_step(sess, model, encoder_inputs, decoder_inputs, decoder_masks, bucket_
     else:
         return None, outputs[0], outputs[1:]  # No gradient norm, loss, outputs.
 
-def _get_buckets():
+def _get_buckets(test_enc, test_dec, train_enc, train_dec):
     """ Load the dataset into buckets based on their lengths.
     train_buckets_scale is the inverval that'll help us 
     choose a random bucket later on.
     """
-    test_buckets = data.load_data('test_ids.enc', 'test_ids.dec')
-    data_buckets = data.load_data('train_ids.enc', 'train_ids.dec')
+    test_buckets = data.load_data(test_enc, test_dec)
+    data_buckets = data.load_data(train_enc, train_dec)
     train_bucket_sizes = [len(data_buckets[b]) for b in range(len(config.BUCKETS))]
     print("Number of samples in each bucket:\n", train_bucket_sizes)
     train_total_size = sum(train_bucket_sizes)
@@ -125,9 +125,9 @@ def _eval_test_set(sess, model, test_buckets):
                                    decoder_masks, bucket_id, True)
         print('Test bucket {}: loss {}, time {}'.format(bucket_id, step_loss, time.time() - start))
 
-def train():
+def train(test_enc, test_dec, train_enc, train_dec):
     """ Train the bot """
-    test_buckets, data_buckets, train_buckets_scale = _get_buckets()
+    test_buckets, data_buckets, train_buckets_scale = _get_buckets(test_enc, test_dec, train_enc, train_dec)
     # in train mode, we need to create the backward path, so forwrad_only is False
     model = ChatBotModel(False, config.BATCH_SIZE)
     model.build_graph()
@@ -237,8 +237,8 @@ def chat():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', choices={'train', 'chat'},
-                        default='train', help="mode. if not specified, it's in the train mode")
+    parser.add_argument('--mode', choices={'train1', 'train2', 'train3', 'chat'},
+                        default='train1', help="mode. if not specified, it's in the train mode")
     args = parser.parse_args()
 
     if not os.path.isdir(config.PROCESSED_PATH):
@@ -248,8 +248,12 @@ def main():
     # create checkpoints folder if there isn't one already
     data.make_dir(config.CPT_PATH)
 
-    if args.mode == 'train':
-        train()
+    if args.mode == 'train1':
+        train('test_ids.enc', 'test_ids.dec', 'train_ids.enc', 'train_ids.dec')
+    elif args.mode == 'train2':
+        train('bang_test_ids.enc', 'bang_test_ids.dec', 'bang_train_ids.enc', 'bang_train_ids.dec')
+    if args.mode == 'train3':
+        train('sheldon_test_ids.enc', 'sheldon_test_ids.dec', 'sheldon_train_ids.enc', 'sheldon_train_ids.dec')
     elif args.mode == 'chat':
         chat()
 

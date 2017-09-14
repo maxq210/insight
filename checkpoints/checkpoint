@@ -1,0 +1,2 @@
+model_checkpoint_path: "chatbot-30"
+all_model_checkpoint_paths: "chatbot-30"
