@@ -64,9 +64,9 @@ def question_answers(id2line, convos):
 
 def bang_char_ques_ans(char_dict, char):
     questions, answers= [], []
-    for index, line in enumerate(char_dict[char][:-1]):
-        questions.append(char_dict[char][index])
-        answers.append(char_dict[char][index + 1])
+    for index, line in enumerate(char_dict[char]):
+        questions.append(char_dict[char][index][0])
+        answers.append(char_dict[char][index][1])
     assert len(questions) == len(answers)
     return questions, answers
 

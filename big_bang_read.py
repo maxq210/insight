@@ -17,11 +17,13 @@ def get_bang_convs():
 				if idx > -1 and idx_before > -1:
 					char = line[:idx]
 					char = re.sub("[\s]*\([\w\s,.\-']*\)[\s]*", '', char)
-					changed_line = re.sub('\([\w\s.,]*\)', '', line)
+					changed_line = re.sub("\([\w\s.,']*\)", '', line)
+					idx = changed_line.find(':')
 					before_scene_flag = False
 					if content[line_index - 2][:6] == 'Scene:':
 						before_scene_flag = True
-					changed_line_before = re.sub('\([\w\s.,]*\)', '', content[line_index - 2])
+					changed_line_before = re.sub("\([\w\s.,']*\)", '', content[line_index - 2])
+					idx_before = changed_line_before.find(':')
 					if char_dict.get(char.strip()) is None:
 						if before_scene_flag:
 							char_dict[char.strip()] = [['', changed_line[idx + 1:].strip()]]
@@ -48,17 +50,17 @@ def get_bang_ques_ans(convos):
 			ques.append(conv[idx])
 			ans.append(conv[idx + 1])
 	assert len(ques) == len(ans)
-	print(len(ques))
 	return ques, ans
 
 if __name__ == '__main__':
 	convos, char_dict = get_bang_convs()
 	ques, ans = get_bang_ques_ans(convos)
-	ques_out = open('ques.txt', 'w+')
-	ans_out = open('ans.txt', 'w+')
-	for item in char_dict['Sheldon']:
-		ques_out.write(item[0] + '\n')
-		ans_out.write(item[1] + '\n') 
+	#ques_out = open('ques.txt', 'w+')
+	#ans_out = open('ans.txt', 'w+')
+	print len(char_dict['Sheldon'])
+	# for item in char_dict['Sheldon']:
+	# 	ques_out.write(item[0] + '\n')
+	# 	ans_out.write(item[1] + '\n') 
 	# print char_dict['Sheldon']
 		#ques_out.write(dialogue[0] + '\n')
 	# for char in char_dict.keys():
