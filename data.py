@@ -193,7 +193,7 @@ def sentence2id(vocab, line):
     #for each token in line, returns word's ID in vocab or <unk>'s id if not in vocab
     return [vocab.get(token, vocab['<unk>']) for token in basic_tokenizer(line)]
 
-def token2id(data, mode):
+def token2id(data, mode, phase):
     """ Convert all the tokens in the data into their corresponding
     index in the vocabulary. """ 
     #Outputs data in the form of tokens from vocab to processed/(train_or_test)/ids.(enc or dec)
@@ -207,7 +207,7 @@ def token2id(data, mode):
     
     lines = in_file.read().splitlines()
     for line in lines:
-        if mode == 'dec': # we only care about '<s>' and </s> in encoder
+        if mode == 'dec' and phase is not 2: # we only care about '<s>' and </s> in encoder
             ids = [vocab['<s>']]
         else:
             ids = []
@@ -232,20 +232,20 @@ def process_data():
     print('Preparing data to be model-ready ...')
     build_vocab('train.enc', 'bang_train.enc')
     build_vocab('train.dec', 'bang_train.dec')
-    token2id('train', 'enc')
-    token2id('train', 'dec')
-    token2id('test', 'enc')
-    token2id('test', 'dec')
+    token2id('train', 'enc', 1)
+    token2id('train', 'dec', 1)
+    token2id('test', 'enc', 1)
+    token2id('test', 'dec', 1)
     print('Preparing Big Bang data to be model-ready ....')
-    token2id('bang_train', 'enc')
-    token2id('bang_train', 'dec')
-    token2id('bang_test', 'enc')
-    token2id('bang_test', 'dec')
+    token2id('bang_train', 'enc', 2)
+    token2id('bang_train', 'dec', 2)
+    token2id('bang_test', 'enc', 2)
+    token2id('bang_test', 'dec', 2)
     print('Preparing Sheldon data to be model-ready ....')
-    token2id('sheldon_train', 'enc')
-    token2id('sheldon_train', 'dec')
-    token2id('sheldon_test', 'enc')
-    token2id('sheldon_test', 'dec')
+    token2id('sheldon_train', 'enc', 3)
+    token2id('sheldon_train', 'dec', 3)
+    token2id('sheldon_test', 'enc', 3)
+    token2id('sheldon_test', 'dec', 3)
 
 def load_data(enc_filename, dec_filename, max_training_size=None):
     #returns data_buckets: For each tuple in BUCKETS from config file, contains an array of 2 arrays: encoded ids and decoded ids
