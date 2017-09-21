@@ -25,6 +25,8 @@ import tensorflow as tf
 from model import ChatBotModel
 import config
 import data
+import webbrowser
+import re
 
 def _get_random_bucket(train_buckets_scale):
     """ Get a random bucket from which to choose a training sample """
@@ -227,13 +229,27 @@ def chat():
                                                                             bucket_id,
                                                                             batch_size=1)
             # Get output logits for the sentence.
-            _, _, output_logits = run_step(sess, model, encoder_inputs, decoder_inputs,
+            response = ''
+            if line.find('email') is not -1:
+                response = construct_email(line)
+            else:
+                _, _, output_logits = run_step(sess, model, encoder_inputs, decoder_inputs,
                                            decoder_masks, bucket_id, True)
-            response = _construct_response(output_logits, inv_dec_vocab)
+                response = _construct_response(output_logits, inv_dec_vocab)
             print(response)
             output_file.write('BOT ++++ ' + response + '\n')
         output_file.write('=============================================\n')
         output_file.close()
+
+def construct_email(line):
+    recipients = ['username@company.com']
+    message = "Test"
+    if line.find('@') is not -1:
+        recipients = re.findall('\w+\@\w+.\w+', line)
+    if line.find(':') is not -1:
+        message = line[line.find(':') + 1:]
+    webbrowser.open("mailto:%s?subject=%s&body=%s" % (','.join(recipients), 'Subject', message))
+    return 'Please add a Subject to email before sending.'
 
 def main():
     parser = argparse.ArgumentParser()
