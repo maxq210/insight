@@ -183,7 +183,7 @@ def _construct_response(output_logits, inv_dec_vocab):
     
     This is a greedy decoder - outputs are just argmaxes of output_logits.
     """
-    print(output_logits[0])
+    #print(output_logits[0])
     outputs = [int(np.argmax(logit, axis=1)) for logit in output_logits]
     # If there is an EOS symbol in outputs, cut them at that point.
     if config.EOS_ID in outputs:
@@ -208,18 +208,18 @@ def chat():
         output_file = open(os.path.join(config.PROCESSED_PATH, config.OUTPUT_FILE), 'a+')
         # Decode from standard input.
         max_length = config.BUCKETS[-1][0]
-        print('Welcome to TensorBro. Say something. Enter to exit. Max length is', max_length)
+        print('Hi, looking forward to talking to you. Press enter to leave. Max length is', max_length)
         while True:
             line = _get_user_input()
             if len(line) > 0 and line[-1] == '\n':
                 line = line[:-1]
             if line == '':
                 break
-            output_file.write('HUMAN ++++ ' + line + '\n')
+            output_file.write('HUMAN ---- ' + line + '\n')
             # Get token-ids for the input sentence.
             token_ids = data.sentence2id(enc_vocab, str(line))
             if (len(token_ids) > max_length):
-                print('Max length I can handle is:', max_length)
+                print('Max possible length is:', max_length)
                 line = _get_user_input()
                 continue
             # Which bucket does it belong to?
@@ -237,7 +237,7 @@ def chat():
                                            decoder_masks, bucket_id, True)
                 response = _construct_response(output_logits, inv_dec_vocab)
             print(response)
-            output_file.write('BOT ++++ ' + response + '\n')
+            output_file.write('BOT ---- ' + response + '\n')
         output_file.write('=============================================\n')
         output_file.close()
 
