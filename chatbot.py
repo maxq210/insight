@@ -115,6 +115,7 @@ def _check_restore_parameters(sess, saver):
 
 def _eval_test_set(sess, model, test_buckets):
     """ Evaluate on the test set. """
+    step_loss_arr = []
     for bucket_id in range(len(config.BUCKETS)):
         if len(test_buckets[bucket_id]) == 0:
             print("  Test: empty bucket %d" % (bucket_id))
@@ -125,7 +126,9 @@ def _eval_test_set(sess, model, test_buckets):
                                                                         batch_size=config.BATCH_SIZE)
         _, step_loss, _ = run_step(sess, model, encoder_inputs, decoder_inputs, 
                                    decoder_masks, bucket_id, True)
+        step_loss_arr.append([bucket_id, step_loss])
         print('Test bucket {}: loss {}, time {}'.format(bucket_id, step_loss, time.time() - start))
+    return step_loss_arr
 
 def train(test_enc, test_dec, train_enc, train_dec):
     """ Train the bot """
@@ -135,12 +138,19 @@ def train(test_enc, test_dec, train_enc, train_dec):
     model.build_graph()
 
     saver = tf.train.Saver()
-
+    #total_loss = 0
+    #vec_loss = tf.get_variable('vec_loss', initializer=tf.zeros([1], dtype=tf.float32))
+    #vec_test_loss = tf.get_variable('vec_test_loss', initializer=tf.zeros([1], dtype=tf.float32))
+    train_writer = tf.summary.FileWriter('./summaries/training')
+    val_writer = tf.summary.FileWriter('./summaries/validation')
+    vec_loss = tf.Variable(0.0)
+    tf.summary.scalar("loss", vec_loss)
+    write_op = tf.summary.merge_all()
     with tf.Session() as sess:
         print('Running session')
         sess.run(tf.global_variables_initializer())
         _check_restore_parameters(sess, saver)
-
+        print('Begin training')
         iteration = model.global_step.eval()
         total_loss = 0
         while True:
@@ -158,11 +168,18 @@ def train(test_enc, test_dec, train_enc, train_dec):
                 print('Iter {}: loss {}, time {}'.format(iteration, total_loss/skip_step, time.time() - start))
                 start = time.time()
                 total_loss = 0
+                summary = sess.run(write_op, {vec_loss: step_loss})
+                train_writer.add_summary(summary, iteration)
+                train_writer.flush()
                 saver.save(sess, os.path.join(config.CPT_PATH, 'chatbot'), global_step=model.global_step)
+
                 if iteration % (10 * skip_step) == 0:
-                    # Run evals on development set and print their loss
-                    _eval_test_set(sess, model, test_buckets)
+                    #Run evals on development set and print their loss
+                    test_step_losses = _eval_test_set(sess, model, test_buckets) #Array, one for each bucket
                     start = time.time()
+                    summary = sess.run(write_op, {vec_loss: test_step_losses[0][1]})
+                    val_writer.add_summary(summary, iteration)
+                    val_writer.flush()
                 sys.stdout.flush()
 
 def _get_user_input():
