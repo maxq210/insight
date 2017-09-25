@@ -144,7 +144,7 @@ def train(test_enc, test_dec, train_enc, train_dec):
     train_writer = tf.summary.FileWriter('./summaries/training')
     val_writer = tf.summary.FileWriter('./summaries/validation')
     vec_loss = tf.Variable(0.0)
-    tf.summary.scalar("loss", vec_loss)
+    tf.summary.scalar("Loss", vec_loss)
     write_op = tf.summary.merge_all()
     with tf.Session() as sess:
         print('Running session')
