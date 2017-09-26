@@ -1,0 +1,129 @@
+HUMAN ---- Hello.
+BOT ---- hey , how did it go ?
+HUMAN ---- not good.
+BOT ---- so , good .
+HUMAN ---- nope
+BOT ---- penny ? penny ? penny ? penny ? penny ?
+HUMAN ---- what ?
+BOT ---- are you sleeping ?
+HUMAN ---- I'm awake.
+BOT ---- oh , great . i ' m sorry .
+HUMAN ---- who are you?
+BOT ---- i ' m sheldon .
+HUMAN ---- last name?
+BOT ---- cookie .
+HUMAN ---- your last name is?
+BOT ---- it ' s for you .
+HUMAN ---- can I sit on the couch?
+BOT ---- no , it ' s not my spot .
+HUMAN ---- where is your spot?
+BOT ---- it ' s my room .
+HUMAN ---- I want to sit in your spot.
+BOT ---- thank you .
+HUMAN ---- can I have your spot?
+BOT ---- no .
+HUMAN ---- what are you doing?
+BOT ---- straightening up .
+HUMAN ---- what's up?
+BOT ---- nothing .
+HUMAN ---- let's go.
+BOT ---- are my new spot .
+HUMAN ---- let's go
+BOT ---- are there to you , you ' re not going to without me ?
+HUMAN ---- I'll drive.
+BOT ---- and you ' re going to have to do it ?
+HUMAN ---- yes
+BOT ---- and i ' m gonna get out of here .
+HUMAN ---- stay.
+BOT ---- i ' m sorry .
+HUMAN ---- I'm sad.
+BOT ---- i ' m not a child , but you have to .
+HUMAN ---- you're a child
+BOT ---- so a .
+HUMAN ---- who is your best friend?
+BOT ---- amy .
+HUMAN ---- who is your girlfriend?
+BOT ---- it ' s me . sorry , leonard .
+HUMAN ---- I'm not leonard.
+BOT ---- and you ' re going to have to do this ?
+HUMAN ---- yes
+BOT ---- and i ' m gonna get out of here .
+HUMAN ---- no
+BOT ---- do you speak a interesting thing for your head ?
+HUMAN ---- physics?
+BOT ---- yeah .
+HUMAN ---- you are an idiot.
+BOT ---- i ' m sorry , but this is an part of life .
+HUMAN ---- ha
+BOT ---- hello .
+HUMAN ---- hey,
+BOT ---- hello .
+HUMAN ---- cocoa?
+BOT ---- and had the two of the roommate drive , they ' re both friends .
+=============================================
+HUMAN ---- hello
+BOT ---- services services services scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars
+HUMAN ---- kjfkjdkfjdkfjd
+BOT ---- services services services scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars
+HUMAN ---- dskdjksjdksjdksj
+BOT ---- services services services scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars
+HUMAN ---- dlskdlskdlsk
+BOT ---- services services services scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars scars
+=============================================
+HUMAN ---- Hello
+BOT ---- transient transient transient cloverleaf cloverleaf flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed
+HUMAN ---- jjjkjkolklklk
+BOT ---- transient transient transient transient imperative flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed flashed intermission intermission
+HUMAN ---- Hello
+BOT ---- hi .
+HUMAN ---- how are you
+BOT ---- i ' m not .
+HUMAN ---- kjdkjdfkd
+BOT ---- what ' s the matter ?
+HUMAN ---- dfldkfldkfld
+BOT ---- what ' s the matter ?
+HUMAN ---- dfdlfkdlfkdlkf
+BOT ---- what ' s the matter ?
+HUMAN ---- Hello
+BOT ---- hi .
+HUMAN ---- fgfhghh
+BOT ---- what ' s the matter ?
+HUMAN ---- hi
+BOT ---- murdering murdering lungs lungs lungs lungs lungs lungs signature signature signature signature signature signature signature signature hong hong pedantic
+HUMAN ---- hi
+BOT ---- hello .
+HUMAN ---- how are you?
+BOT ---- i ' m doing wrong .
+HUMAN ---- where are you?
+BOT ---- where ?
+HUMAN ---- what's up?
+BOT ---- nothing .
+HUMAN ---- what are you doing?
+BOT ---- straightening up .
+=============================================
+HUMAN ---- Hello.
+BOT ---- hey , how did it go ?
+HUMAN ---- Hi.
+BOT ---- hi .
+HUMAN ---- how's it going?
+BOT ---- if i ' m going to have to do it .
+HUMAN ---- do what?
+BOT ---- penny .
+HUMAN ---- who are you?
+BOT ---- i ' m sheldon .
+HUMAN ---- what's your name?
+BOT ---- chair .
+HUMAN ---- chair?
+BOT ---- and my room .
+HUMAN ---- where are you?
+BOT ---- where ?
+HUMAN ---- what are you eating?
+BOT ---- drat .
+HUMAN ---- what's for dinner?
+BOT ---- came on <unk> .
+HUMAN ---- where's leonard?
+BOT ---- from a book .
+HUMAN ---- where's penny?
+BOT ---- who ' s the name ?
+HUMAN ---- i don't understand...
+BOT ---- well , you ' re going to be late .
