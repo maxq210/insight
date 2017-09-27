@@ -79,12 +79,11 @@ def _get_buckets(test_enc, test_dec, train_enc, train_dec):
     test_buckets = data.load_data(test_enc, test_dec)
     data_buckets = data.load_data(train_enc, train_dec)
     train_bucket_sizes = [len(data_buckets[b]) for b in range(len(config.BUCKETS))]
-    print("Number of samples in each bucket:\n", train_bucket_sizes)
+    print("Samples per bucket:\n", train_bucket_sizes)
     train_total_size = sum(train_bucket_sizes)
     # list of increasing numbers from 0 to 1 that we'll use to select a bucket.
     train_buckets_scale = [sum(train_bucket_sizes[:i + 1]) / train_total_size
                            for i in range(len(train_bucket_sizes))]
-    print("Bucket scale:\n", train_buckets_scale)
     return test_buckets, data_buckets, train_buckets_scale
 
 def _get_skip_step(iteration):
@@ -162,7 +161,7 @@ def train(test_enc, test_dec, train_enc, train_dec):
                 train_writer.flush()
                 saver.save(sess, os.path.join(config.CPT_PATH, 'chatbot'), global_step=model.global_step)
 
-                if iteration % (10 * skip_step) == 0:
+                if iteration % (2.5 * skip_step) == 0:
                     #Run evals on development set and print their loss
                     test_step_losses = _eval_test_set(sess, model, test_buckets) #Array, one for each bucket
                     start = time.time()
