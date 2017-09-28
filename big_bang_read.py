@@ -37,7 +37,7 @@ def get_bang_convs():
 							char_dict[char.strip()].append([changed_line_before[idx_before + 1:].strip(), changed_line[idx + 1:].strip()])
 				line = re.sub(r'\([\w\s,.]+\)[.]*', '', line) 
 				line = re.sub('([A-Za-z\s,.]+:)','', line)
-				if line.strip() is not '' and line.lower().find('credit sequence') is -1:
+				if line.strip() is not '' and line.lower().find('credit sequence') is -1 and line.lower().find('credits sequence') is -1:
 					convos[-1].append(char + '+++' + line.strip())
 	return convos, char_dict
 
