@@ -161,7 +161,7 @@ def train(test_enc, test_dec, train_enc, train_dec):
                 train_writer.flush()
                 saver.save(sess, os.path.join(config.CPT_PATH, 'chatbot'), global_step=model.global_step)
 
-                if iteration % (2.5 * skip_step) == 0:
+                if iteration % (10 * skip_step) == 0:
                     #Run evals on development set and print their loss
                     test_step_losses = _eval_test_set(sess, model, test_buckets) #Array, one for each bucket
                     start = time.time()

@@ -1,15 +1,3 @@
-""" A neural chatbot using sequence to sequence model with
-attentional decoder. 
-This is based on Google Translate Tensorflow model 
-https://github.com/tensorflow/models/blob/master/tutorials/rnn/translate/
-Sequence to sequence model by Cho et al.(2014)
-Created by Chip Huyen as the starter code for assignment 3,
-class CS 20SI: "TensorFlow for Deep Learning Research"
-cs20si.stanford.edu
-This file contains the hyperparameters for the model.
-See readme.md for instruction on how to run the starter code.
-"""
-
 # parameters for processing the dataset
 DATA_PATH = 'data/cornell movie-dialogs corpus'
 CONVO_FILE = 'movie_conversations.txt'
