@@ -50,3 +50,17 @@ HUMAN ---- I see.
 BOT ---- you ' re back .
 HUMAN ---- what's up?
 BOT ---- oh , i ' m not sure that you ' re back .
+HUMAN ---- Hi
+BOT ---- hey , stuart .
+HUMAN ---- Hi.
+BOT ---- hi .
+HUMAN ---- How are you?
+BOT ---- good .
+HUMAN ---- who are you?
+BOT ---- i ' m sorry .
+HUMAN ---- Hello.
+BOT ---- hey , sheldon .
+HUMAN ---- Hi.
+BOT ---- hi .
+HUMAN ---- who are you?
+BOT ---- i ' m sorry .
