@@ -1,4 +1,4 @@
-##Chatbot with Personality
+#Chatbot with Personality
 
 This is a seq2seq with attention deep learning model for training a chatbot. After training, there is a command line interface to support chat.
 
