@@ -172,7 +172,7 @@ def train(test_enc, test_dec, train_enc, train_dec):
 
 def _get_user_input():
     """ Get user's input, which will be transformed into encoder input later """
-    print("> ", end="")
+    print("Human: ", end="")
     sys.stdout.flush()
     return sys.stdin.readline()
 
@@ -241,7 +241,7 @@ def chat():
                 _, _, output_logits = run_step(sess, model, encoder_inputs, decoder_inputs,
                                            decoder_masks, bucket_id, True)
                 response = _construct_response(output_logits, inv_dec_vocab)
-            print(response)
+            print('Sheldon: ' + response)
             output_file.write('BOT ---- ' + response + '\n')
         output_file.write('=============================================\n')
         output_file.close()
